@@ -8,10 +8,10 @@ license = "MIT OR Apache-2.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-esp32c6-hal = { version="0.6.0" }
+esp-hal = { version = "0.16.1", features = ["esp32c6"]}
 
 # dependencies when using the log feature
-esp-println = { version="0.7.1", features = ["log", "rtt", "esp32c6", "colors"], default-features = false, optional = true}
+esp-println = { version="0.9.1", features = ["log", "esp32c6", "colors", "uart"], default-features = false, optional = true}
 log = { version = "0.4.20", optional = true}
 
 # dependencies when using the demft feature
@@ -34,6 +34,7 @@ panic-probe = {git = "https://github.com/t-moe/defmt"}  # the upstream create do
 [patch.crates-io] # Patch defmt globally, as it is a native library.
 defmt = { git = "https://github.com/t-moe/defmt" }
 defmt-rtt = { git = "https://github.com/t-moe/defmt" }
+embedded-test = {git = "https://github.com/probe-rs/embedded-test/", branch = "next"}
 
 [features]
 default = ["log"]
@@ -44,3 +45,4 @@ defmt = ["dep:defmt-rtt", "dep:defmt", "embedded-test/defmt", "panic-probe/print
 [[test]]
 name = "example_test"
 harness = false
+

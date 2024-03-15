@@ -6,7 +6,7 @@
 mod unit_tests {
 
     // import hal which provides exception handler
-    use esp32c6_hal::{clock::ClockControl, peripherals::Peripherals, prelude::*, IO};
+    use esp_hal::{clock::ClockControl, peripherals::Peripherals, prelude::*, IO};
 
     use panic_probe as _; // calls semihosting::process::abort on test failure, printing is done by probe-rs
 
